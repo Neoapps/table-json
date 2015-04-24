@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JSON + Javascript + Bootstrap</title>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+    
+  <!-- Bootstrap -->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    
+  <style>
+  html, body{
+    height: 100%;
+    margin: 0px;
+    padding: 0px
+  }
+  body{
+    padding-top: 40px
+  }
+
+  </style>
+
+</head>
+<body>
+    
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <h3>JSON + Javascript + Bootstrap</h3>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+
+        <table class="table table-condensed table-hover table-clickable">
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Score</th>
+            </tr>
+          </thead>        
+          <tbody class="users"></tbody>
+        </table>
+          
+      </div>
+    </div>
+  </div>  
+    
+    
+</body>
+<script>
+      
+  var json = [
+    {"user":"Fred","score":"10"},
+    {"user":"Daniel","score":"15"},
+    {"user":"Diego","score":"12"}
+  ];
+      
+  var tbody = document.querySelector(".users");
+
+  for (var i = 0; i < json.length; i++) {
+    // New row
+    var row = createRow();
+    // Add cell to row
+    addCell(row, json[i].user);
+    // Add cell to row
+    addCell(row, json[i].score);
+    // Add row to tbody            
+    addRow(tbody, row);
+  }
+  
+  function createRow(){
+    var row = document.createElement("tr");
+    return row;
+  }       
+
+  function addCell(row, data){
+    var cell = document.createElement("td");
+    var cellData = document.createTextNode(data);
+    cell.appendChild(cellData);
+    row.appendChild(cell);
+  }
+  
+  function addRow(tbody, row){
+    tbody.appendChild(row);
+  }       
+
+</script>
+
+</html>
